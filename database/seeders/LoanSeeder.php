@@ -19,17 +19,17 @@ class LoanSeeder extends Seeder
             'return_at' => now(),
             'created_at' => now(),
         ]);
-        DB::table('loans')->insert([
-            'user_id' => 2,
-            'loan_at' => now(),
-            'return_at' => now(),
-            'created_at' => now(),
-        ]);
-        DB::table('loans')->insert([
-            'user_id' => 3,
-            'loan_at' => now(),
-            'return_at' => now(),
-            'created_at' => now(),
-        ]);
+        // DB::table('loans')->insert([
+        //     'user_id' => 2,
+        //     'loan_at' => now(),
+        //     'return_at' => now(),
+        //     'created_at' => now(),
+        // ]);
+        // DB::table('loans')->insert([
+        //     'user_id' => 3,
+        //     'loan_at' => now(),
+        //     'return_at' => now(),
+        //     'created_at' => now(),
+        // ]);
     }
 }

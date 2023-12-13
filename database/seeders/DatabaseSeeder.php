@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             BookshelfSeeder::class,
             CategorySeeder::class,
             BookSeeder::class,
+            GeneralSeeder::class,
         ]);
     }
 }
