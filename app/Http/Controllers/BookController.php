@@ -2,27 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\BooksExport;
-use App\Imports\BooksImport;
 use App\Models\Book;
 use App\Models\Bookshelf;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
 
 class BookController extends Controller
 {
     public function index()
     {
         $data['books'] = Book::all();
-        return view('books.index', $data);
+        return view('book.index', $data);
     }
 
     public function create()
     {
         $data['bookshelves'] = Bookshelf::pluck('name', 'id');
-        return view('books.create', $data);
+        return view('book.create', $data);
     }
 
     public function store(Request $request)
@@ -77,6 +73,7 @@ class BookController extends Controller
             'year' => 'required|digits:4|integer|min:1900|max:'.(date('Y')),
             'publisher' => 'required|max:100',
             'city' => 'required|max:75',
+            'quantity' => 'required|numeric',
             'bookshelf_id' => 'required',
             'cover' => 'nullable|image',
         ]);
@@ -108,6 +105,8 @@ class BookController extends Controller
         $book->delete();
 
         Storage::delete('public/cover_buku/'.$book->cover);
+
+        $book->delete();
 
         $notification = array(
             'message' => 'Data buku berhasil dihapus',

@@ -10,7 +10,7 @@ class Book extends Model
 {
     use HasFactory;
     public function bookshelfs(): BelongsTo{
-        return $this->belongsTo(Bookshelf::class, 'bookshelf_id');
+        return $this->belongsTo(Bookshelf::class);
     }
 
     protected $fillable = [
@@ -19,6 +19,7 @@ class Book extends Model
         'year',
         'publisher',
         'city',
+        'quantity',
         'cover',
         'bookshelf_id'
     ];

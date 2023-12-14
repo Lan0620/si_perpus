@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Book;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,25 +14,30 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('books')->insert([
-            'title' => 'Judul Buku A',
-            'author' => 'Pengarang A',
-            'year' => 2023,
-            'publisher' => 'Publisher A',
-            'city' => 'Kota A',
-            'cover' => 'https://cover.buku.a',
-            'bookshelf_id' => 1,
-            'created_at' => now(),
-        ]);
-        DB::table('books')->insert([
-            'title' => 'Judul Buku B',
-            'author' => 'Pengarang B',
-            'year' => 2077,
-            'publisher' => 'Publisher B',
-            'city' => 'Kota B',
-            'cover' => 'https://cover.buku.b',
-            'bookshelf_id' => 2,
-            'created_at' => now(),
+        Book::insert([
+            [
+                'title' => 'Judul Buku 1',
+                'author' => 'Penulis 1',
+                'year' => 2023,
+                'publisher' => 'Penerbit 1',
+                'city' => 'Kota 1',
+                'cover' => 'cover.jpg',
+                'quantity' => 0,
+                'bookshelf_id' => 1,
+                'created_at' => now(),
+            ],
+            [
+                'title' => 'Judul Buku 2',
+                'author' => 'Penulis 2',
+                'year' => 2024,
+                'publisher' => 'Penerbit 2',
+                'city' => 'Kota 2',
+                'cover' => 'cover.jpg',
+                'quantity' => 0,
+                'bookshelf_id' => 2,
+                'created_at' => now(),
+            ],
+           
         ]);
     }
 }

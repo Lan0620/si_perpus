@@ -32,7 +32,7 @@
             </div>
                 @endhasrole
                     <div class="hidden space-x-8 sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('book')" :active="request()->routeIs('book')">
+                    <x-nav-link :href="route('book')" :active="request()->routeIs('book') || request()->routeIs('book.create')">
                         {{ __('Book') }}
                     </x-nav-link>
                      </div>     
