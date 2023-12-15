@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Bookshelf;
+use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -60,7 +62,7 @@ class BookController extends Controller
     {
         $data['book'] = Book::find($id);
         $data['bookshelves'] = Bookshelf::pluck('name', 'id');
-        return view('books.edit', $data);
+        return view('book.edit', $data);
     }
 
     public function update(Request $request, string $id)
@@ -116,12 +118,13 @@ class BookController extends Controller
         return redirect()->route('book')->with($notification);
     }
 
-    // public function print()
-    // {
-    //     $data['books'] = Book::all();
-    //     $pdf = Pdf::loadView('books.print', $data);
-    //     return $pdf->stream('books.pdf');
-    // }
+    public function print()
+    {
+       $books = Book::all();
+
+       $pdf = FacadePdf::loadView('book.print', ['books' => $books]);
+       return $pdf->stream('data-buku.pdf');
+    }
 
     // public function export()
     // {
@@ -141,6 +144,6 @@ class BookController extends Controller
     //         'alert-type' => 'success'
     //     );
 
-//         return redirect()->route('book')->with($notification);
-//     }
+    //     return redirect()->route('book')->with($notification);
+    // }
 }
