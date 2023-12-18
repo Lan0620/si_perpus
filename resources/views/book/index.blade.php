@@ -51,11 +51,11 @@
                         @endforeach
                         <x-primary-button tag="a" href="{{route('book.create')}}"> Tambah Data Buku</x-primary-button>
                         <x-primary-button tag="a" href="{{route('book.print')}}" target='blank'>Cetak Buku</x-primary-button>
-                        {{-- <x-primary-button tag="a" href="{{route('book.export')}}" target='blank'>Export Excel</x-primary-button> --}}
-                        {{-- <x-primary-button x-data=""
+                        <x-primary-button tag="a" href="{{route('book.export')}}" target='blank'>Export Excel</x-primary-button>
+                        <x-primary-button x-data=""
                                         x-on:click.prevent="$dispatch('open-modal', 'import-book')">
                         {{ __('Import Excel') }}
-                        </x-primary-button> --}}
+                        </x-primary-button>
 
                         <br/><br/>
                     </x-table>
